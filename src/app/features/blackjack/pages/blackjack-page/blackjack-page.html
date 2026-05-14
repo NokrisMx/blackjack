@@ -1,0 +1,74 @@
+<div class="min-h-screen overflow-hidden bg-[#0f172a] text-white">
+
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.15),transparent_70%)]"></div>
+
+  <div class="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-center p-6">
+
+    <h1 class="mb-10 text-center text-5xl font-black tracking-widest text-emerald-300 drop-shadow-lg">
+      BLACKJACK
+    </h1>
+
+    <div
+      class="rounded-[40px] border border-emerald-400/20 bg-linear-to-b from-emerald-900 to-emerald-950 p-8 shadow-[0_0_100px_rgba(16,185,129,0.2)]">
+
+      <div class="mb-16 text-center">
+
+        <h2 class="mb-2 text-3xl font-bold text-red-300">
+          Computadora
+        </h2>
+
+        <p class="mb-6 text-5xl font-black">
+          {{ blackjackService.dealerScore() }}
+        </p>
+
+        <div class="flex min-h-55 justify-center gap-4">
+
+          @for(card of blackjackService.dealerCards(); track card.code) {
+
+          <app-card [image]="card.image" />
+
+          }
+
+        </div>
+
+      </div>
+
+      <div class="mb-12 text-center">
+
+        <h2 class="mb-2 text-3xl font-bold text-emerald-300">
+          Jugador
+        </h2>
+
+        <p class="mb-6 text-5xl font-black">
+          {{ blackjackService.playerScore() }}
+        </p>
+
+        <div class="flex min-h-55 justify-center gap-4">
+
+          @for(card of blackjackService.playerCards(); track card.code) {
+
+          <app-card [image]="card.image" />
+
+          }
+
+        </div>
+      </div>
+      <app-game-controls [disabled]="gameFinished()" (hit)="hit()" (stand)="stand()" (newGame)="startGame()" />
+
+      @if(winner()) {
+
+      <div class="mt-10 rounded-3xl border border-white/10 bg-black/40 p-6 text-center backdrop-blur-xl">
+
+        <p class="text-4xl font-black text-yellow-300">
+          {{ winner() }}
+        </p>
+
+      </div>
+
+      }
+
+    </div>
+
+  </div>
+
+</div>

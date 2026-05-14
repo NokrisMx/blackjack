@@ -1,0 +1,18 @@
+<div class="flex flex-wrap justify-center gap-4">
+
+  <button (click)="newGame.emit()"
+    class="rounded-2xl bg-red-500 px-6 py-3 font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-red-400">
+    Nuevo Juego
+  </button>
+
+  <button [disabled]="disabled" (click)="hit.emit()"
+    class="rounded-2xl bg-emerald-500 px-6 py-3 font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-emerald-400 disabled:opacity-50">
+    Pedir Carta
+  </button>
+
+  <button [disabled]="disabled" (click)="stand.emit()"
+    class="rounded-2xl bg-yellow-500 px-6 py-3 font-bold text-black shadow-lg transition-all duration-300 hover:scale-105 hover:bg-yellow-400 disabled:opacity-50">
+    Detener
+  </button>
+
+</div>
