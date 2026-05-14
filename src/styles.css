@@ -1,3 +1,41 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-@import "tailwindcss";
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-color: #080612;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgba(20, 10, 40, 0.5);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(139, 92, 246, 0.4);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(167, 139, 250, 0.6);
+  }
+
+  ::selection {
+    background: rgba(139, 92, 246, 0.4);
+    color: white;
+  }
+}
