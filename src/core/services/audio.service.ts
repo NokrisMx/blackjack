@@ -13,12 +13,22 @@ export class AudioService {
 
   private winSound = new Howl({
     src: ['assets/sounds/win.mp3'],
-    volume: 0.6,
+    volume: 0.5,
   });
 
   private loseSound = new Howl({
     src: ['assets/sounds/lose.mp3'],
-    volume: 0.6,
+    volume: 0.5,
+  });
+
+  private shuffleSound = new Howl({
+    src: ['assets/sounds/shuffle.mp3'],
+    volume: 0.5,
+  });
+
+  private drawSound = new Howl({
+    src: ['assets/sounds/draw.mp3'],
+    volume: 0.5,
   });
 
   playCard() {
@@ -31,5 +41,13 @@ export class AudioService {
 
   playLose() {
     this.loseSound.play();
+  }
+
+  playShuffle() {
+    this.shuffleSound.play();
+  }
+
+  playDraw() {
+    this.drawSound.play();
   }
 }

@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Card } from '../models/card.model';
+import { AudioService } from './audio.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DeckService {
+  audioService = inject(AudioService);
   private suits = ['C', 'D', 'H', 'S'];
   private specials = ['A', 'J', 'Q', 'K'];
 
@@ -37,6 +39,7 @@ export class DeckService {
       }
     }
 
+    this.audioService.playShuffle();
     return this.shuffle(deck);
   }
 

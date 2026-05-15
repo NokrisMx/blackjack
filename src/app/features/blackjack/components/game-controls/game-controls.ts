@@ -1,15 +1,13 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, input, Input, output, Output } from '@angular/core';
 
 @Component({
   selector: 'app-game-controls',
-  standalone: true,
   templateUrl: './game-controls.html',
-  styleUrl: './game-controls.css',
 })
 export class GameControlsComponent {
-  @Input() disabled = false;
+  disabled = input<boolean>(false);
 
-  @Output() hit = new EventEmitter<void>();
-  @Output() stand = new EventEmitter<void>();
-  @Output() newGame = new EventEmitter<void>();
+  hit = output<void>();
+  stand = output<void>();
+  newGame = output<void>();
 }

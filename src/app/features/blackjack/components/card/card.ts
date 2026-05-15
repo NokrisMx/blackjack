@@ -1,22 +1,20 @@
-import { Component, ElementRef, Input, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, input, viewChild } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { gsap } from 'gsap';
 
 @Component({
   selector: 'app-card',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './card.html',
-  styleUrl: './card.css',
 })
 export class CardComponent implements AfterViewInit {
-  @Input({ required: true }) image!: string;
+  image = input.required<string>();
 
-  @ViewChild('cardRef') cardRef!: ElementRef;
+  cardRef = viewChild<ElementRef>('cardRef');
 
   ngAfterViewInit(): void {
-    gsap.from(this.cardRef.nativeElement, {
+    gsap.from(this.cardRef()?.nativeElement, {
       y: -300,
       x: -200,
       rotate: -180,

@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 @layer base {
   *,
@@ -38,4 +37,23 @@
     background: rgba(139, 92, 246, 0.4);
     color: white;
   }
+}
+
+/* SweetAlert2 */
+.swal-bj-popup {
+  border: 1px solid rgba(16, 185, 129, 0.35) !important;
+  border-radius: 1.5rem !important;
+  box-shadow: 0 0 60px rgba(16, 185, 129, 0.2) !important;
+}
+
+.swal-bj-title {
+  font-size: 2rem !important;
+  font-weight: 900 !important;
+}
+
+.swal-bj-btn {
+  font-weight: 700 !important;
+  padding: 0.75rem 2rem !important;
+  border-radius: 1rem !important;
+  font-size: 1rem !important;
 }
