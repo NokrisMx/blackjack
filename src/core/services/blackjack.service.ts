@@ -2,6 +2,7 @@ import { inject, Injectable, signal } from '@angular/core';
 import { Card } from '../models/card.model';
 import { DeckService } from './deck.service';
 import { AudioService } from './audio.service';
+import { HistoryService } from './history.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +10,7 @@ import { AudioService } from './audio.service';
 export class BlackjackService {
   constructor(private deckService: DeckService) {}
   audioService = inject(AudioService);
+  historyService = inject(HistoryService);
 
   deck = signal<Card[]>([]);
 
@@ -123,10 +125,13 @@ export class BlackjackService {
 
     if (winner === 'Jugador gana') {
       this.audioService.playWin();
+      this.historyService.addWin();
     } else if (winner === 'Computadora gana') {
       this.audioService.playLose();
+      this.historyService.addLoss();
     } else {
       this.audioService.playDraw();
+      this.historyService.addTie();
     }
   }
 }

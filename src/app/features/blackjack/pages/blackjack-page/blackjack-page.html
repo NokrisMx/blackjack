@@ -4,10 +4,74 @@
 
   <div class="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-center p-4">
 
-    <h1 class="mb-8 text-center text-5xl font-black tracking-widest text-emerald-300 drop-shadow-lg">
-      BLACKJACK
-    </h1>
+    <div class="mb-8 flex items-center justify-center gap-3">
+      <h1 class="text-center text-4xl lg:text-5xl font-black tracking-widest text-emerald-300 drop-shadow-lg">
+        BLACKJACK
+      </h1>
+      <button (click)="showRules()" class="flex h-8 w-8 items-center justify-center rounded-full border border-emerald-400/40
+           bg-emerald-900/60 text-sm font-black text-emerald-300 transition-all duration-200
+           hover:scale-110 hover:border-emerald-400 hover:bg-emerald-800 hover:text-white">
+        ?
+      </button>
+    </div>
+    <!-- Historial -->
+    <div class="mb-6 flex items-center justify-center gap-3 flex-wrap">
 
+      <div class="flex items-center gap-4 rounded-2xl border border-emerald-400/20
+              bg-emerald-950/60 px-6 py-3 backdrop-blur-sm">
+
+        <div class="flex flex-col items-center">
+          <span class="text-xs font-bold uppercase tracking-widest text-emerald-400/60">
+            Ganadas
+          </span>
+          <span class="text-2xl font-black text-emerald-300">
+            {{ historyService.history().wins }}
+          </span>
+        </div>
+
+        <div class="h-8 w-px bg-emerald-700/40"></div>
+
+        <div class="flex flex-col items-center">
+          <span class="text-xs font-bold uppercase tracking-widest text-red-400/60">
+            Perdidas
+          </span>
+          <span class="text-2xl font-black text-red-300">
+            {{ historyService.history().losses }}
+          </span>
+        </div>
+
+        <div class="h-8 w-px bg-emerald-700/40"></div>
+
+        <div class="flex flex-col items-center">
+          <span class="text-xs font-bold uppercase tracking-widest text-yellow-400/60">
+            Empates
+          </span>
+          <span class="text-2xl font-black text-yellow-300">
+            {{ historyService.history().ties }}
+          </span>
+        </div>
+
+        <!-- <div class="h-8 w-px bg-emerald-700/40"></div>
+
+        <div class="flex flex-col items-center">
+          <span class="text-xs font-bold uppercase tracking-widest text-slate-400/60">
+            Total
+          </span>
+          <span class="text-2xl font-black text-slate-300">
+            {{ historyService.total }}
+          </span>
+        </div> -->
+
+      </div>
+
+      <!-- Botón reset -->
+      <button (click)="resetHistory()" title="Borrar historial" class="flex h-10 w-10 items-center justify-center rounded-xl border border-red-500/30
+           bg-red-950/50 text-red-400 transition-all duration-200
+           hover:scale-110 hover:border-red-400 hover:bg-red-900/60 hover:text-red-300">
+        🗑️
+      </button>
+
+    </div>
     <div
       class="rounded-4xl border border-emerald-400/20 bg-linear-to-b from-emerald-900 to-emerald-950 p-8 shadow-[0_0_100px_rgba(16,185,129,0.2)]">
 
