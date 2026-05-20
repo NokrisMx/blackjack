@@ -1,6 +1,6 @@
 [build]
   command = "ng build"
-  publish = "dist/blackjack-angular/browser"
+  publish = "dist/blackjack/browser"
 
 [[redirects]]
   from = "/*"
