@@ -62,7 +62,7 @@ export class BlackjackPageComponent {
       title,
       background: '#052e16',
       color,
-      confirmButtonText: '🎲 Jugar de nuevo',
+      confirmButtonText: '<i class="pi pi-refresh text-md"></i> Jugar de nuevo',
       confirmButtonColor: '#10b981',
       allowOutsideClick: false,
       customClass: {
@@ -95,7 +95,7 @@ export class BlackjackPageComponent {
       title: 'Reglas del Blackjack',
       background: '#052e16',
       color: '#6ee7b7',
-      confirmButtonText: '¡Entendido!',
+      confirmButtonText: '<i class="pi pi-thumbs-up-fill text-md"></i> ¡Entendido!',
       confirmButtonColor: '#10b981',
       allowOutsideClick: true,
       customClass: {

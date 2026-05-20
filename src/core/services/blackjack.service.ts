@@ -57,7 +57,7 @@ export class BlackjackService {
 
     this.playerCards.update((cards) => [...cards, card]);
 
-    this.playerScore.update((score) => score + card.value);
+    this.playerScore.set(this.calculateScore(this.playerCards()));
 
     if (this.playerScore() >= 21) {
       this.stand();
@@ -89,7 +89,7 @@ export class BlackjackService {
 
         this.audioService.playCard();
         this.dealerCards.update((cards) => [...cards, card]);
-        this.dealerScore.update((score) => score + card.value);
+        this.dealerScore.set(this.calculateScore(this.dealerCards()));
 
         setTimeout(dealNextCard, 800);
       } else {
@@ -99,6 +99,28 @@ export class BlackjackService {
     };
 
     dealNextCard();
+  }
+
+  private calculateScore(cards: Card[]): number {
+    let score = 0;
+    let aces = 0;
+
+    for (const card of cards) {
+      if (card.code.startsWith('A')) {
+        aces++;
+        score += 11;
+      } else {
+        score += card.value;
+      }
+    }
+
+    // Si nos pasamos y hay ases, los convertimos a 1 de uno en uno
+    while (score > 21 && aces > 0) {
+      score -= 10; // 11 - 1 = 10 de diferencia
+      aces--;
+    }
+
+    return score;
   }
 
   getWinner(): string {

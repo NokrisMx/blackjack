@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Card } from '../models/card.model';
 import { AudioService } from './audio.service';
+import * as _ from 'underscore';
 
 @Injectable({
   providedIn: 'root',
@@ -25,25 +26,15 @@ export class DeckService {
 
     for (const suit of this.suits) {
       for (const special of this.specials) {
-        let value = 10;
-
-        if (special === 'A') {
-          value = 11;
-        }
-
         deck.push({
           code: `${special}${suit}`,
           image: `assets/cards/${special}${suit}.png`,
-          value,
+          value: special === 'A' ? 11 : 10,
         });
       }
     }
 
     this.audioService.playShuffle();
-    return this.shuffle(deck);
-  }
-
-  private shuffle(array: Card[]): Card[] {
-    return [...array].sort(() => Math.random() - 0.5);
+    return _.shuffle(deck);
   }
 }
